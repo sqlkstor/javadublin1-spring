@@ -9,18 +9,20 @@ import java.util.List;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private JpaUserRepository jpaUserRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, JpaUserRepository jpaUserRepository) {
         this.userRepository = userRepository;
+        this.jpaUserRepository = jpaUserRepository;
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id)
+        return jpaUserRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public Iterable<User> findAll() {
+        return jpaUserRepository.findAll();
     }
 
     public List<User> fingByGender(String gender){
@@ -34,6 +36,6 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        userRepository.save(user);
+        jpaUserRepository.save(user);
     }
 }
