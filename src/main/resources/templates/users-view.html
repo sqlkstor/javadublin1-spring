@@ -10,5 +10,14 @@
                th:href="'/users/' + ${user.id}"
                th:text="${user.fullName}">Szymon Nowak</a></li>
     </ul>
+    <form action="/users" method="post">
+        FirstName <input type="text" name="firstName"><br/>
+        LastName <input type="text" name="lastName"><br/>
+        Gender
+        <select name="gender" id="gender">
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+        </select>
+    </form>
 </body>
 </html>
