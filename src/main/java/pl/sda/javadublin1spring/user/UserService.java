@@ -1,6 +1,8 @@
 package pl.sda.javadublin1spring.user;
 
 import org.springframework.stereotype.Service;
+import pl.sda.javadublin1spring.user.exceptions.InvalidParameterException;
+import pl.sda.javadublin1spring.user.exceptions.UserNotFoundException;
 
 import java.util.List;
 
@@ -19,6 +21,16 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public List<User> fingByGender(String gender){
+        try {
+            Gender enumGender = Gender.valueOf(gender);
+            return userRepository.findByGender(enumGender);
+        }catch(IllegalArgumentException e){
+            throw new InvalidParameterException("gender");
+        }
+
     }
 
     public void saveUser(User user) {
