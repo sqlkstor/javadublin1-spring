@@ -1,5 +1,5 @@
 package pl.sda.javadublin1spring.todo;
 
-public enum TodoStatus{
-    NEW, IN_PROGRESS, DONE;
+public enum TodoStatus {
+    NEW, IN_PROGRESS, DONE
 }

@@ -1,11 +1,6 @@
 package pl.sda.javadublin1spring.todo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import pl.sda.javadublin1spring.user.InMemoryUserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +12,11 @@ public class InMemoryTodoRepository implements TodoRepository {
 
     private List<Todo> todoList;
 
-    public InMemoryTodoRepository(){
+    public InMemoryTodoRepository() {
         this.todoList = new ArrayList<>();
     }
 
-    InMemoryTodoRepository(List<Todo> todos){
+    InMemoryTodoRepository(List<Todo> todos) {
         this.todoList = new ArrayList<>(todos);
     }
 
