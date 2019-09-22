@@ -1,6 +1,8 @@
 package pl.sda.javadublin1spring.user;
 
 import org.springframework.stereotype.Service;
+import pl.sda.javadublin1spring.user.entities.Gender;
+import pl.sda.javadublin1spring.user.entities.User;
 import pl.sda.javadublin1spring.user.exceptions.InvalidParameterException;
 import pl.sda.javadublin1spring.user.exceptions.UserNotFoundException;
 

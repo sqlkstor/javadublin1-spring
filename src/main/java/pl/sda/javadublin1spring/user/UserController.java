@@ -4,8 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Random;
+import pl.sda.javadublin1spring.user.entities.User;
 
 @Controller
 @RequestMapping("/users")

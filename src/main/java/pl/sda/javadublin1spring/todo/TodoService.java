@@ -21,7 +21,7 @@ public class TodoService {
                 .orElseThrow(() -> new TodoNotFoundException(id));
     }
 
-    public List<Todo> findAll() {
+    public Iterable<Todo> findAll() {
         return todoRepository.findAll();
     }
 
