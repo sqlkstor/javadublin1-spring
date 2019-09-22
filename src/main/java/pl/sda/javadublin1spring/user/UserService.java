@@ -1,6 +1,8 @@
 package pl.sda.javadublin1spring.user;
 
 import org.springframework.stereotype.Service;
+import pl.sda.javadublin1spring.user.entities.Gender;
+import pl.sda.javadublin1spring.user.entities.User;
 import pl.sda.javadublin1spring.user.exceptions.InvalidParameterException;
 import pl.sda.javadublin1spring.user.exceptions.UserNotFoundException;
 
@@ -8,25 +10,25 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private UserRepository userRepository;
+    private JpaUserRepository jpaUserRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(JpaUserRepository jpaUserRepository) {
+        this.jpaUserRepository = jpaUserRepository;
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id)
+        return jpaUserRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public Iterable<User> findAll() {
+        return jpaUserRepository.findAll();
     }
 
     public List<User> fingByGender(String gender){
         try {
             Gender enumGender = Gender.valueOf(gender);
-            return userRepository.findByGender(enumGender);
+            return jpaUserRepository.findByGender(enumGender);
         }catch(IllegalArgumentException e){
             throw new InvalidParameterException("gender");
         }
@@ -34,6 +36,6 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        userRepository.save(user);
+        jpaUserRepository.save(user);
     }
 }
